@@ -1,0 +1,56 @@
+[gd_scene load_steps=2 format=3 uid="uid://0v27pwnrrooc"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_tfxb1"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_tfxb1")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CashLabel" type="Label" parent="UI/Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="PriceLabel" type="Label" parent="UI/Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="SharesLabel" type="Label" parent="UI/Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="DayLabel" type="Label" parent="UI/Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Control"]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 459.0
+offset_right = 315.0
+offset_bottom = 628.0
+
+[node name="BuyButton" type="Button" parent="UI/Control/HBoxContainer"]
+layout_mode = 2
+text = "      KUP      "
+
+[node name="SellButton" type="Button" parent="UI/Control/HBoxContainer"]
+layout_mode = 2
+text = "   SPRZEDAJ   "
+
+[node name="NextDayButton" type="Button" parent="UI/Control/HBoxContainer"]
+layout_mode = 2
+text = "NASTĘPNY DZIEŃ"
+
+[connection signal="pressed" from="UI/Control/HBoxContainer/BuyButton" to="." method="_on_buy_button_pressed"]
+[connection signal="pressed" from="UI/Control/HBoxContainer/SellButton" to="." method="_on_sell_button_pressed"]
+[connection signal="pressed" from="UI/Control/HBoxContainer/NextDayButton" to="." method="_on_next_day_button_pressed"]
