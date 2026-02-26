@@ -51,6 +51,17 @@ text = "   SPRZEDAJ   "
 layout_mode = 2
 text = "NASTĘPNY DZIEŃ"
 
+[node name="Control" type="Control" parent="UI/Control"]
+anchors_preset = 0
+offset_left = 144.0
+offset_top = 60.0
+offset_right = 855.0
+offset_bottom = 454.0
+
+[node name="Line2D" type="Line2D" parent="UI/Control/Control"]
+begin_cap_mode = 2
+end_cap_mode = 2
+
 [connection signal="pressed" from="UI/Control/HBoxContainer/BuyButton" to="." method="_on_buy_button_pressed"]
 [connection signal="pressed" from="UI/Control/HBoxContainer/SellButton" to="." method="_on_sell_button_pressed"]
 [connection signal="pressed" from="UI/Control/HBoxContainer/NextDayButton" to="." method="_on_next_day_button_pressed"]

@@ -5,6 +5,7 @@ var cash: float = 1000.0
 var stock_price: float = 100.0
 var shares_owned: int = 0
 var current_day: int = 1
+var graph_width: int = 15
 
 # --- REFERENCJE DO UI ---
 @onready var cash_label = $UI/Control/VBoxContainer/CashLabel
@@ -12,7 +13,12 @@ var current_day: int = 1
 @onready var shares_label = $UI/Control/VBoxContainer/SharesLabel
 @onready var day_label = $UI/Control/VBoxContainer/DayLabel
 
+@onready var line = $UI/Control/Control/Line2D
+
 func _ready():
+	line.clear_points()
+	line.default_color = Color(57/255, 255/255, 20/255)
+	
 	update_ui()
 
 # --- LOGIKA BIZNESOWA ---
@@ -37,7 +43,21 @@ func _on_next_day_button_pressed():
 	current_day += 1
 	# Prosta symulacja zmiany ceny: od -10% do +12%
 	var change_percent = randf_range(-0.10, 0.12)
+	var old_stock_price = stock_price
 	stock_price = stock_price * (1.0 + change_percent)
+	if old_stock_price < stock_price:
+		line.default_color = Color(57/255, 255/255, 20/255) # Zielony kolor
+	else:
+		line.default_color = Color(255/255, 49/255, 49/255) # Czerwony kolor
+	
+	if line.get_point_count() > 20:
+		line.remove_point(0)
+		
+		for i in range(line.points.size()):
+			var point = line.get_point_position(i)
+			line.set_point_position(i, Vector2(i*graph_width,point.y))
+	
+	line.add_point(Vector2(line.points.size()*graph_width, -stock_price+400))
 	
 	# Zabezpieczenie, żeby cena nie spadła do zera
 	stock_price = max(stock_price, 1.0)
