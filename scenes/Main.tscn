@@ -1,0 +1,282 @@
+[gd_scene load_steps=4 format=3 uid="uid://0v27pwnrrooc"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_tfxb1"]
+[ext_resource type="Script" path="res://scripts/learningModule.gd" id="2_s7bse"]
+[ext_resource type="Script" path="res://scripts/simulator.gd" id="3_nr78j"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_tfxb1")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="background" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.618271, 0.485386, 0.346539, 1)
+
+[node name="MainMenu" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/MainMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MainMenu/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="title" type="Label" parent="CanvasLayer/MainMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "FINFLOW"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="btnLearn" type="Button" parent="CanvasLayer/MainMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "NAUKA"
+
+[node name="btnSim" type="Button" parent="CanvasLayer/MainMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "SYMULATOR"
+
+[node name="LearningModule" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_s7bse")
+
+[node name="SlideArea" type="Panel" parent="CanvasLayer/LearningModule"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Content" type="RichTextLabel" parent="CanvasLayer/LearningModule/SlideArea"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/line_separation = 100
+theme_override_font_sizes/bold_italics_font_size = 50
+bbcode_enabled = true
+autowrap_mode = 2
+
+[node name="Navigation" type="HBoxContainer" parent="CanvasLayer/LearningModule"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 114.0
+offset_top = -83.0
+offset_right = 114.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 100
+
+[node name="btnPrev" type="Button" parent="CanvasLayer/LearningModule/Navigation"]
+custom_minimum_size = Vector2(250, 80)
+layout_mode = 2
+text = "Wstecz"
+
+[node name="btnExit" type="Button" parent="CanvasLayer/LearningModule/Navigation"]
+custom_minimum_size = Vector2(250, 80)
+layout_mode = 2
+text = "Menu"
+
+[node name="btnNext" type="Button" parent="CanvasLayer/LearningModule/Navigation"]
+custom_minimum_size = Vector2(250, 80)
+layout_mode = 2
+text = "Dalej"
+
+[node name="Simulator" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_nr78j")
+
+[node name="Control" type="Control" parent="CanvasLayer/Simulator"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Simulator/Control"]
+layout_mode = 1
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 438.0
+offset_bottom = 218.0
+
+[node name="CashLabel" type="Label" parent="CanvasLayer/Simulator/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+
+[node name="PriceLabel" type="Label" parent="CanvasLayer/Simulator/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+
+[node name="SharesLabel" type="Label" parent="CanvasLayer/Simulator/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+
+[node name="DayLabel" type="Label" parent="CanvasLayer/Simulator/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Simulator/Control"]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 459.0
+offset_right = 387.0
+offset_bottom = 628.0
+
+[node name="BuyButton" type="Button" parent="CanvasLayer/Simulator/Control/HBoxContainer"]
+layout_mode = 2
+text = "      KUP      "
+
+[node name="SellButton" type="Button" parent="CanvasLayer/Simulator/Control/HBoxContainer"]
+layout_mode = 2
+text = "   SPRZEDAJ   "
+
+[node name="NextDayButton" type="Button" parent="CanvasLayer/Simulator/Control/HBoxContainer"]
+layout_mode = 2
+text = "NASTĘPNY DZIEŃ"
+
+[node name="Line2D" type="Line2D" parent="CanvasLayer/Simulator/Control"]
+position = Vector2(100, 100)
+points = PackedVector2Array(1238, -166)
+width = 4.0
+default_color = Color(0, 0.291123, 0.118824, 1)
+
+[node name="settingsBtn" type="Button" parent="CanvasLayer/Simulator"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -94.0
+offset_bottom = 94.0
+grow_horizontal = 0
+text = "Ustawienia
+"
+
+[node name="settingsPanel" type="PanelContainer" parent="CanvasLayer/Simulator"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.5
+offset_top = -64.0
+offset_right = 104.5
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Simulator/settingsPanel"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Simulator/settingsPanel/VBoxContainer"]
+layout_mode = 2
+text = "USTAWIENIA SYMULATORA"
+
+[node name="Gotówka" type="HBoxContainer" parent="CanvasLayer/Simulator/settingsPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Simulator/settingsPanel/VBoxContainer/Gotówka"]
+layout_mode = 2
+text = "Gotówka:"
+
+[node name="Cashinput" type="SpinBox" parent="CanvasLayer/Simulator/settingsPanel/VBoxContainer/Gotówka"]
+layout_mode = 2
+max_value = 999999.0
+
+[node name="Cena" type="HBoxContainer" parent="CanvasLayer/Simulator/settingsPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Simulator/settingsPanel/VBoxContainer/Cena"]
+layout_mode = 2
+text = "Cena akcji:"
+
+[node name="Priceinput" type="SpinBox" parent="CanvasLayer/Simulator/settingsPanel/VBoxContainer/Cena"]
+layout_mode = 2
+max_value = 999999.0
+
+[node name="Ryzyko" type="HBoxContainer" parent="CanvasLayer/Simulator/settingsPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Simulator/settingsPanel/VBoxContainer/Ryzyko"]
+layout_mode = 2
+text = "Zmienność %:"
+
+[node name="Riskinput" type="SpinBox" parent="CanvasLayer/Simulator/settingsPanel/VBoxContainer/Ryzyko"]
+layout_mode = 2
+max_value = 999999.0
+
+[node name="ShowChartCheck" type="CheckBox" parent="CanvasLayer/Simulator/settingsPanel/VBoxContainer"]
+layout_mode = 2
+text = "Pokazuj wykres"
+
+[node name="closeSettingsBtn" type="Button" parent="CanvasLayer/Simulator/settingsPanel/VBoxContainer"]
+layout_mode = 2
+text = "Zastosuj i zamknij"
+
+[node name="btnExit2" type="Button" parent="CanvasLayer/Simulator"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -64.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Menu"
+
+[connection signal="pressed" from="CanvasLayer/MainMenu/CenterContainer/VBoxContainer/btnLearn" to="." method="_on_btn_learn_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/CenterContainer/VBoxContainer/btnSim" to="." method="_on_btn_sim_pressed"]
+[connection signal="pressed" from="CanvasLayer/LearningModule/Navigation/btnPrev" to="CanvasLayer/LearningModule" method="_on_btn_prev_pressed"]
+[connection signal="pressed" from="CanvasLayer/LearningModule/Navigation/btnExit" to="." method="_on_btn_exit_pressed"]
+[connection signal="pressed" from="CanvasLayer/LearningModule/Navigation/btnNext" to="CanvasLayer/LearningModule" method="_on_btn_next_pressed"]
+[connection signal="pressed" from="CanvasLayer/Simulator/Control/HBoxContainer/BuyButton" to="." method="_on_buy_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Simulator/Control/HBoxContainer/BuyButton" to="CanvasLayer/Simulator" method="_on_buy_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Simulator/Control/HBoxContainer/SellButton" to="." method="_on_sell_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Simulator/Control/HBoxContainer/SellButton" to="CanvasLayer/Simulator" method="_on_sell_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Simulator/Control/HBoxContainer/NextDayButton" to="." method="_on_next_day_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Simulator/Control/HBoxContainer/NextDayButton" to="CanvasLayer/Simulator" method="_on_next_day_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Simulator/settingsBtn" to="CanvasLayer/Simulator" method="_on_settings_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/Simulator/settingsPanel/VBoxContainer/closeSettingsBtn" to="CanvasLayer/Simulator" method="_on_close_settings_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/Simulator/btnExit2" to="CanvasLayer/Simulator" method="_on_btn_exit_2_pressed"]
